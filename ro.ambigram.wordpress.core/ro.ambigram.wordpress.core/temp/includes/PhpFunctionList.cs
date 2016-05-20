@@ -4,22 +4,22 @@ using System.Collections.Generic;
 
 namespace ro.ambigram.wordpress.core
 {
-    public class WpFunctionList
+    public class WpFunctions
     {
         /// <summary>
         ///       * HTTP request for URI to retrieve content.
- //*
- //* @since 1.5.1
- //*
- //* @see wp_safe_remote_get()
- //*
- //* @param string $uri URI/URL of web page to retrieve.
- //* @return false|string HTTP content.False on failure.
- 
+        //*
+        //* @since 1.5.1
+        //*
+        //* @see wp_safe_remote_get()
+        //*
+        //* @param string $uri URI/URL of web page to retrieve.
+        //* @return false|string HTTP content.False on failure.
+
         /// </summary>
         /// <param name="uri"></param>
         /// <returns></returns>
-        public Func<String,Object> wp_remote_open(String uri)
+        public Func<String, Object> wp_remote_open(String uri)
         {
             //           $parsed_url = @parse_url( $uri);
 
@@ -54,8 +54,8 @@ namespace ro.ambigram.wordpress.core
         /// </summary>
         public Action<Object> wp = ((query_vars) =>
         {
-    
-          
+
+
             /**
              * Set up the WordPress query.
              *
@@ -68,12 +68,12 @@ namespace ro.ambigram.wordpress.core
              * @param string|array $query_vars Default WP_Query arguments.
              */
             //function wp( $query_vars = '' ) {
-              //  global $wp, $wp_query, $wp_the_query;
-	//$wp->main( $query_vars);
+            //  global $wp, $wp_query, $wp_the_query;
+            //$wp->main( $query_vars);
 
-      //          if (!isset($wp_the_query))
-	//	$wp_the_query = $wp_query;
-      //      }
+            //          if (!isset($wp_the_query))
+            //	$wp_the_query = $wp_query;
+            //      }
         });
 
         /// <summary>
@@ -85,6 +85,79 @@ namespace ro.ambigram.wordpress.core
               return "HTTP/1.0";
           };
 
-        
+        public Action wp_unregister_GLOBALS = () =>
+        {
+
+            //               if (!ini_get('register_globals'))
+            //                   return;
+
+            //               if (isset( $_REQUEST['GLOBALS']))
+            //                   die('GLOBALS overwrite attempt detected');
+
+            //// Variables that shouldn't be unset
+            //$no_unset = array('GLOBALS', '_GET', '_POST', '_COOKIE', '_REQUEST', '_SERVER', '_ENV', '_FILES', 'table_prefix');
+
+            //$input = array_merge( $_GET, $_POST, $_COOKIE, $_SERVER, $_ENV, $_FILES, isset( $_SESSION) && is_array( $_SESSION) ? $_SESSION: array());
+            //               foreach ( $input as $k => $v )
+            //	if (!in_array( $k, $no_unset) && isset( $GLOBALS[$k]))
+            //               {
+            //                   unset( $GLOBALS[$k]);
+            //               }
+            //           }
+        };
+
+        public Action wp_fix_server_vars = () => { };
+
+        public Action wp_check_php_mysql_version => () =>
+        {
+            WpPrerequisiteManager.check_db_access();
+        };
+
+        public Action wp_favicon_request = () =>
+        {
+            throw new NotImplementedException("wp_favicon_request");
+        };
+
+        public Action wp_maintenance = () =>
+        {
+            throw new NotImplementedException("wp_maintenance");
+        };
+        public Action wp_translation_early = () =>
+        {
+            throw new NotImplementedException();
+        };
+
+
+        public Func<bool> timer_start = () =>
+        {
+            return true;
+        };
+        public Func<int?, int?, Object> timer_stop = (a, b) =>
+          {
+              return new { };
+          };
+
+
+        public Action wp_debug_mode = () =>
+        {
+            throw new NotImplementedException();
+        };
+        public Action wp_set_lang_dir = () =>
+        {
+            throw new NotImplementedException();
+        };
+
+        public Func<WpDb> require_wp_db = () =>
+        {
+            return WpDb.Current;
+        };
+
+        public Action wp_set_wpdb_vars = () =>
+        {
+            throw new NotImplementedException();
+        };
+
+
+
     }
 }
