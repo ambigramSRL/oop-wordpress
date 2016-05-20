@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ro.ambigram.wordpress.core.common;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -7,8 +8,7 @@ using System.Threading.Tasks;
 
 namespace ro.ambigram.wordpress.core
 {
-    public class WordpressConfig: ApplicationSettingsBase
-    {
+    public class WordpressConfig: WpCfgBase { 
         private static WordpressConfig _single;
 
         public WordpressConfig()
@@ -28,6 +28,6 @@ namespace ro.ambigram.wordpress.core
                 }
                 return _single;
             }
-            private set; }
+            private set { } }
     }
 }
