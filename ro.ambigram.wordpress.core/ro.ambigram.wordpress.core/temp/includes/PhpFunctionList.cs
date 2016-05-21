@@ -157,6 +157,25 @@ namespace ro.ambigram.wordpress.core
             throw new NotImplementedException();
         };
 
+        private static Action TempNotImplemented1 = () =>
+        {
+            throw new NotImplementedException();
+        };
+        private static Action<int> TempNotImplemented2 = (a) =>
+        {
+            throw new NotImplementedException();
+        };
+        public Action wp_start_object_cache = TempNotImplemented1;
+
+        public Action<int> wp_cache_switch_to_blog = TempNotImplemented2;
+
+        public Action<bool> wp_using_ext_object_cache = TempNotImplemented3;
+
+        private static void TempNotImplemented3(bool obj)
+        {
+            throw new NotImplementedException();
+        }
+
 
 
     }

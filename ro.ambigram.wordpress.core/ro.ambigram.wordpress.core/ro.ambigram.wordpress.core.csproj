@@ -40,7 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="common\net.web.ext\IWebSiteRequestProcessator.cs" />
     <Compile Include="common\WpCfgBase.cs" />
+    <Compile Include="common\WpSiteRequestContext.cs" />
     <Compile Include="networksite\NetworkSiteConfig.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -48,12 +50,18 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
+    <Compile Include="temp\includes\PhpFunctionList.cs" />
+    <Compile Include="temp\includes\WpDb.cs" />
+    <Compile Include="temp\includes\WpPrerequisiteManager.cs" />
+    <Compile Include="temp\wp-blog-header.php.cs" />
+    <Compile Include="temp\includes\WpLoad.cs" />
     <Compile Include="WordpressNetworkSite.cs" />
     <Compile Include="WordpressConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="html\wp_maintenance.html.part" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
